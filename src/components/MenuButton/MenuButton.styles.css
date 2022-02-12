@@ -1,0 +1,58 @@
+.button--type--text, .button--type--icon {
+    
+    height: 24px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    color: #48626f;
+    cursor: pointer;
+}
+
+.button--type--text {
+
+    padding: 4px 8px;
+}
+
+.button--type--icon {
+    
+    padding: 4px;
+    border-radius: 12px;
+}
+
+
+.button__value, .button__icon{
+
+    fill: #48626f;
+    
+}
+
+.button__icon {
+
+    height: 16px;
+    width: 16px;
+}
+
+.button__icon img {
+
+    height: 100%;
+}
+
+.button__value {
+
+    margin-left: 4px;
+}
+
+
+.button--type--text:hover {
+    
+    color: #0b66ff;
+}
+
+.button--type--icon:hover {
+
+    background-color: #e8f2fa;
+    color: #0b66ff;
+}

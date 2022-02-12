@@ -1,0 +1,77 @@
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+}
+
+.header__1, .header__2 {
+    height: 56px;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.header__2 {
+    height: 40px;
+}
+
+.header__wrapper {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header__logo {
+
+    font-size: 22px;
+    padding-right: 16px;
+    border-right: 1px #dbeaf5 solid;
+}
+
+
+.header__account__wrapper {
+
+height: 22px;
+display: flex;
+align-items: center;
+border-left: 1px #dbeaf5 solid;
+}
+
+.header__account {
+
+padding: 8px;
+margin-left: 16px;
+border: 1px solid #fff;
+border-radius: 4px;
+transition: all 0.3s ease;
+}
+
+.header__account:hover {
+
+
+    border: 1px solid #dbeaf5;
+    background-color: #eef2f8;
+    }
+
+
+.divider--left {
+
+    padding-left: 16px;
+    border-left: 1px #dbeaf5 solid;
+}
+
+.divider--rigth {
+
+    padding-right: 16px;
+    border-right: 1px #dbeaf5 solid;
+}
+.divider--top {
+
+    border-top: 1px #dbeaf5 solid;
+}
+
+.divider--bottom {
+
+    border-bottom: 1px #dbeaf5 solid;
+}

@@ -1,0 +1,50 @@
+.inputTxt {
+
+    height: 100%;
+    width: 100%;
+    padding: 4px 16px;
+    border: 1px solid #eef2f8;
+    background-color: #eef2f8;
+    color: #101820;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s ease;
+
+}
+.inputTxt::placeholder, .inputType--Search::placeholder {
+    color: #a4a8af;
+}
+
+
+.inputTxt:hover {
+
+    background-color: white;
+    border: 1px solid #0b66ff;
+    cursor: text;
+    caret-color: #0b66ff;
+}
+
+
+.inputSeach__wrapper {
+
+    display: flex;
+    align-items: center;
+    padding: 0 ;
+    position: relative;
+}
+.inputSeach__wrapper button {
+
+    position: absolute;
+    right: 6px;
+}
+
+.inputSeach__wrapper button:hover {
+    background-color: #eef2f8;
+}
+
+.inputType--Search {
+
+    padding: 4px 32px 4px 12px;
+    border-radius: 50px;
+}
+
