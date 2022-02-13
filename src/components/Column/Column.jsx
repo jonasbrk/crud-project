@@ -12,20 +12,36 @@ const Column = (props) => {
 
     const [itemWraper, setItemWraper] = useState([])
 
+    const [inputTitle, setInputTitle] = useState('')
+
+    const [inputContent, setInputContent] = useState('')
+
     const [openItemModal, setOpenItemModal] = useState(false)
 
 
-    const HandleItemWraper = () => {
+    const HandleItemWraper = (Title, Content) => {
 
         const newItemWraper = [...itemWraper,
 
         {
             id: Math.random(),
-            title: Math.random(),
-            Conteudo: 'fgiasdfgjsadhfgj',
+            title: Title,
+            Conteudo: Content,
         }];
 
         setItemWraper(newItemWraper)
+    }
+
+    const HandleInputTitle = (e) => {
+
+        setInputTitle(e.target.value)
+
+    }
+
+    const HandleInputContent = (e) => {
+
+        setInputContent(e.target.value)
+
     }
 
     const HandleItemWraperDeletion = (itemWraperID) => {
@@ -40,9 +56,9 @@ const Column = (props) => {
     return (
         <>
             <div className="column">
-                <ColumnHeader id={props.id} title={props.title} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} />
+                <ColumnHeader id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
                 <div className="column__main">
-                    {itemWraper.map((e) => { return <ColumnItem HandleItemWraperDeletion={HandleItemWraperDeletion} id={e.id} key={e.id} /> })}
+                    {itemWraper.map((e) => { return <ColumnItem title={e.title} content={e.Conteudo} HandleItemWraperDeletion={HandleItemWraperDeletion} id={e.id} key={e.id} /> })}
                 </div>
             </div>
             <Modal onClick={() => { setOpenItemModal(false) }} value={openItemModal}>
@@ -53,26 +69,27 @@ const Column = (props) => {
                     </h3>
                     <div className="item__edit__1">
                         <span>Titulo</span>
-                        <InputTxt />
+                        <InputTxt value={inputTitle} onChange={HandleInputTitle} />
 
                     </div>
                     <div className="item__edit__2">
                         <span>
                             Conteudo
                         </span>
-                        <InputTxt /></div>
+                        <InputTxt value={inputContent} onChange={HandleInputContent} /></div>
 
                     <div className="creation__btns">
                         <button
-                        // onClick={() => { setOpenModal(false) }}
+                            onClick={() => { setOpenItemModal(false) }}
                         >
                             Cancelar
                         </button>
                         <button onClick={() => {
-                            // HandleColumns(InputData)
-                            // setOpenModal(false)
+
+                            HandleItemWraper(inputTitle, inputContent)
+                            setOpenItemModal(false)
                         }}
-                        // className={`save--button ${InputData ? null : 'save--button--disable'}`} disabled={!InputData}
+                            className={`save--button ${inputTitle ? null : 'save--button--disable'}`} disabled={!inputTitle}
                         >
                             Salvar
                         </button>

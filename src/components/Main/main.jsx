@@ -25,6 +25,7 @@ const Main = () => {
             title: input,
         }];
         setColumns(newColumn)
+
     }
 
     const HandleColumnsDeletion = (ColumnId) => {
@@ -47,8 +48,8 @@ const Main = () => {
     return (
         <main>
 
-
-            {Columns.map((e) => { return <Column HandleColumnsDeletion={HandleColumnsDeletion} title={e.title} id={e.id} key={e.id} /> })}
+            <MenuButton src={<Automation />} onClick={() => console.log(Columns)} />
+            {Columns.map((e) => { return <Column HandleColumnsDeletion={HandleColumnsDeletion} title={e.title} id={e.id} key={e.id} Columns={Columns} /> })}
 
 
             <MenuButton onClick={() => {

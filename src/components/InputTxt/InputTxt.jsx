@@ -11,7 +11,7 @@ const InputTxt = (props) => {
         <>
             {props.type == 'Search' ?
                 <div className=" inputSeach__wrapper">
-                    <input onChange={props.onChange} className='inputTxt inputType--Search' type='text' placeholder={props.placeholder ? props.placeholder : null} />
+                    <input value={props.value} onChange={props.onChange} className='inputTxt inputType--Search' type='text' placeholder={props.placeholder ? props.placeholder : null} />
                     <MenuButton src={<Search />} />
                 </div>
                 : <input value={props.value} onChange={props.onChange} className={`inputTxt inputType--${props.type}`} type='text' placeholder={props.placeholder ? props.placeholder : null} />}

@@ -1,0 +1,91 @@
+.txtButton__wrapper {
+
+    position:absolute;
+    top: 3px;
+    left: 0;
+
+    height: 162px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 4px;
+
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #c1d5e4;
+    box-shadow: rgb(102 102 102 / 5%) 0px 3px 17px
+}
+
+.txtButton__wrapper--open {
+
+    display: flex;
+}
+
+.txtButton__Input input{
+
+    box-sizing: border-box;
+    background-color: white;
+    font-weight: 700;
+    
+}
+
+.txtButton__wrapper .txtButton__Input{
+background-color: white;
+}
+
+
+
+
+.color__picker {
+
+    display: flex;
+
+    
+}
+
+.color__picker  ul{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    list-style: none;
+    padding: 0;
+    padding: 0;
+
+}
+
+.color__picker  ul label {
+
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+
+}
+
+.color__picker  ul label .checkmark {
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: 50%;
+    display: none;
+
+}
+
+.color__picker  ul label input:checked + .checkmark {
+
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+}
+
+.color__picker  ul label input{
+
+    display: none;
+}
+

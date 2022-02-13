@@ -16,14 +16,14 @@ const ColumnItem = (props) => {
                 </div>
                 <div className="columnItem__section__2">
                     <h3>
-                        abacate
+                        {props.title}
                     </h3>
                 </div>
 
             </div>
 
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus quisquam ratione minus minima labore laboriosam
+                {props.content}
             </p>
 
         </div>
