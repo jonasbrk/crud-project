@@ -58,7 +58,22 @@ const Column = (props) => {
             <div className="column">
                 <ColumnHeader id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
                 <div className="column__main">
-                    {itemWraper.map((e) => { return <ColumnItem title={e.title} content={e.Conteudo} HandleItemWraperDeletion={HandleItemWraperDeletion} id={e.id} key={e.id} /> })}
+                    {itemWraper.map((e) => {
+                        return <ColumnItem
+                            HandleInputTitle={HandleInputTitle}
+                            inputTitle={inputTitle}
+                            HandleInputContent={HandleInputContent}
+                            inputContent={inputContent}
+                            HandleItemWraperDeletion={HandleItemWraperDeletion}
+                            itemWraper={itemWraper}
+                            setOpenItemModal={setOpenItemModal}
+                            openItemModal={openItemModal}
+                            title={e.title}
+                            content={e.Conteudo}
+                            id={e.id}
+                            key={e.id}
+                        />
+                    })}
                 </div>
             </div>
             <Modal onClick={() => { setOpenItemModal(false) }} value={openItemModal}>

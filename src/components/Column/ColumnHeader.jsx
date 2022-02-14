@@ -16,7 +16,7 @@ const ColumnHeader = (props) => {
     return (
 
         <div className={`column__header column--${buttonColor}`}>
-            <div className="column__title">
+            <div className={`column__title ${buttonColor}`}>
                 <InputTxtButton id={props.id} title={props.title} Columns={props.Columns} buttonColor={buttonColor} setButtonColor={setButtonColor} id={props.id} />
 
             </div>

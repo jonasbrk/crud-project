@@ -30,6 +30,10 @@ font-size: 14px;
 
 }
 
+.column__title {
+
+background-color: transparent !important;
+}
 
 .column__header__btn, .column__btns_1, .column__btns_2{
 
@@ -115,17 +119,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(255, 61, 0);
 }
 
-.background--1 input{
+.background--1 input,.background--1 button {
 
     color: rgb(255, 61, 0);
     accent-color: rgb(255, 61, 0);
     border: 1px solid rgb(255, 61, 0);
 }
-.background--1 input:hover{
+.background--1 input:hover,.background--1 button:hover{
 
     color: rgb(255, 61, 0);
     accent-color: rgb(255, 61, 0);
-    border: 1px solid rgb(255, 61, 0);
+    border: 1px solid rgb(255, 61, 0) !important;
 }
 .background--2 {
 
@@ -137,17 +141,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(245, 31, 126);
 }
 
-.background--2 input{
+.background--2 input,.background--2 button {
 
     color: rgb(245, 31, 126);
     accent-color: rgb(245, 31, 126);
     border: 1px solid rgb(245, 31, 126);
 }
-.background--2 input:hover{
+.background--2 input:hover,.background--2 button:hover{
 
     color: rgb(245, 31, 126);
     accent-color: rgb(245, 31, 126);
-    border: 1px solid rgb(245, 31, 126);
+    border: 1px solid rgb(245, 31, 126) !important;
 }
 .background--3 {
 
@@ -159,17 +163,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(162, 0, 242);
 }
 
-.background--3 input{
+.background--3 input,.background--3 button {
 
     color: rgb(162, 0, 242);
     accent-color: rgb(162, 0, 242);
     border: 1px solid rgb(162, 0, 242);
 }
-.background--3 input:hover{
+.background--3 input:hover,.background--3 button:hover{
 
     color: rgb(162, 0, 242);
     accent-color: rgb(162, 0, 242);
-    border: 1px solid rgb(162, 0, 242);
+    border: 1px solid rgb(162, 0, 242) !important;
 }
 .background--4 {
 
@@ -181,17 +185,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(101, 29, 255);
 }
 
-.background--4 input{
+.background--4 input,.background--4 button {
 
     color: rgb(101, 29, 255);
     accent-color: rgb(101, 29, 255);
     border: 1px solid rgb(101, 29, 255);
 }
-.background--4 input:hover{
+.background--4 input:hover,.background--4 button:hover{
 
     color: rgb(101, 29, 255);
     accent-color: rgb(101, 29, 255);
-    border: 1px solid rgb(101, 29, 255);
+    border: 1px solid rgb(101, 29, 255) !important;
 }
 .background--5 {
 
@@ -203,17 +207,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(0, 106, 210);
 }
 
-.background--5 input{
+.background--5 input,.background--5 button {
 
     color: rgb(0, 106, 210);
     accent-color: rgb(0, 106, 210);
     border: 1px solid rgb(0, 106, 210);
 }
-.background--5 input:hover{
+.background--5 input:hover,.background--5 button:hover{
 
     color: rgb(0, 106, 210);
     accent-color: rgb(0, 106, 210);
-    border: 1px solid rgb(0, 106, 210);
+    border: 1px solid rgb(0, 106, 210) !important ;
 }
 .background--6 {
 
@@ -225,17 +229,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(0, 157, 255);
 }
 
-.background--6 input{
+.background--6 input,.background--6 button {
 
     color: rgb(0, 157, 255);
     accent-color: rgb(0, 157, 255);
     border: 1px solid rgb(0, 157, 255);
 }
-.background--6 input:hover{
+.background--6 input:hover,.background--6 button:hover{
 
     color: rgb(0, 157, 255);
     accent-color: rgb(0, 157, 255);
-    border: 1px solid rgb(0, 157, 255);
+    border: 1px solid rgb(0, 157, 255) !important;
 }
 .background--7 {
 
@@ -247,17 +251,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(0, 188, 212);
 }
 
-.background--7 input{
+.background--7 input,.background--7 button {
 
     color: rgb(0, 188, 212);
     accent-color: rgb(0, 188, 212);
     border: 1px solid rgb(0, 188, 212);
 }
-.background--7 input:hover{
+.background--7 input:hover,.background--7 button:hover{
 
     color: rgb(0, 188, 212);
     accent-color: rgb(0, 188, 212);
-    border: 1px solid rgb(0, 188, 212);
+    border: 1px solid rgb(0, 188, 212) !important;
 }
 .background--8 {
 
@@ -269,17 +273,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(0, 191, 165);
 }
 
-.background--8 input{
+.background--8 input,.background--8 button {
 
     color: rgb(0, 191, 165);
     accent-color: rgb(0, 191, 165);
     border: 1px solid rgb(0, 191, 165);
 }
-.background--8 input:hover{
+.background--8 input:hover,.background--8 button:hover{
 
     color: rgb(0, 191, 165);
     accent-color: rgb(0, 191, 165);
-    border: 1px solid rgb(0, 191, 165);
+    border: 1px solid rgb(0, 191, 165) !important; 
 }
 .background--9 {
 
@@ -291,17 +295,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(100, 221, 23);
 }
 
-.background--9 input{
+.background--9 input,.background--9 button {
 
     color: rgb(100, 221, 23);
     accent-color: rgb(100, 221, 23);
     border: 1px solid rgb(100, 221, 23);
 }
-.background--9 input:hover{
+.background--9 input:hover,.background--9 button:hover{
 
     color: rgb(100, 221, 23);
     accent-color: rgb(100, 221, 23);
-    border: 1px solid rgb(100, 221, 23);
+    border: 1px solid rgb(100, 221, 23) !important; 
 }
 .background--10 {
 
@@ -313,17 +317,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(255, 171, 0);
 }
 
-.background--10 input {
+.background--10 input,.background--10 button {
 
     color: rgb(255, 171, 0);
     accent-color: rgb(255, 171, 0);
     border: 1px solid rgb(255, 171, 0);
 }
-.background--10 input:hover {
+.background--10 input:hover,.background--10 button:hover {
 
     color: rgb(255, 171, 0);
     accent-color: rgb(255, 171, 0);
-    border: 1px solid rgb(255, 171, 0);
+    border: 1px solid rgb(255, 171, 0) !important;
 }
 .background--11 {
 
@@ -335,17 +339,17 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(255, 111, 0);
 }
 
-.background--11 input {
+.background--11 input,.background--11 button {
 
     color: rgb(255, 111, 0);
     accent-color: rgb(255, 111, 0);
     border: 1px solid rgb(255, 111, 0);
 }
-.background--11 input:hover {
+.background--11 input:hover,.background--11 button:hover {
 
     color: rgb(255, 111, 0);
     accent-color: rgb(255, 111, 0);
-    border: 1px solid rgb(255, 111, 0);
+    border: 1px solid rgb(255, 111, 0) !important;
 }
 .background--12 {
 
@@ -357,16 +361,16 @@ font-size: 14px;
     box-shadow: inset 0 3px 0 rgb(109, 124, 135);
 }
 
-.background--12 input {
+.background--12 input,.background--12 button {
 
     color: rgb(109, 124, 135);
     accent-color: rgb(109, 124, 135);
     border: 1px solid rgb(109, 124, 135);
 }
-.background--12 input:hover {
+.background--12 input:hover,.background--12 button:hover {
 
     color: rgb(109, 124, 135);
     accent-color: rgb(109, 124, 135);
-    border: 1px solid rgb(109, 124, 135);
+    border: 1px solid rgb(109, 124, 135) !important;
 }
 

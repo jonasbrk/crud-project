@@ -6,42 +6,35 @@ const InputTxtButton = (props) => {
 
     const [txtButton, setTxtButton] = useState(false)
     const [buttonTitle, setButtonTitle] = useState(props.title)
-    const [columnsTitle, setColumnsTitle] = useState(props.Columns.find(x => x.id === props.id))
 
     const Ref = useRef(null)
 
+    useEffect(() => {
 
-    // const HandleColumnTitle = () => {
+        const setTitle = () => {
+            props.Columns.find(x => x.id === props.id).title = buttonTitle
+        }
 
-    //     setColumnsTitle(columnsTitle.title = buttonTitle)
-
-
-    // }
-
+        setTitle()
+    }, [buttonTitle])
 
 
     const HandleButtonTitle = (e) => {
 
         setButtonTitle(e.target.value)
 
-        console.log(props.Columns.find(x => x.id === props.id).title)
 
 
     }
+
 
     useEffect(() => {
 
         function handleClickOutside(event) {
             if (Ref.current && !Ref.current.contains(event.target)) {
 
-
-                setTxtButton(false)
-
-                // HandleColumnTitle(props.Columns, props.id)
-                if (props.Columns.find(x => x.id === props.id))
-                    return { ...props.Columns, title: buttonTitle }
+                setTxtButton(false);
             }
-
         }
 
         document.addEventListener("mousedown", handleClickOutside);
@@ -55,13 +48,12 @@ const InputTxtButton = (props) => {
 
     return (
         <>
-            <button onClick={() => console.log(props.Columns.find(x => x.id === props.id))}></button>
             <button className="txtButton" onClick={() => setTxtButton(true)}>
                 {buttonTitle}
             </button>
             <div ref={Ref} className={`txtButton__wrapper ${txtButton && ('txtButton__wrapper--open')}`}>
                 <div className={`txtButton__Input ${props.buttonColor}`}>
-                    <InputTxt onChange={(e) => HandleButtonTitle(e)}  >{props.children}</InputTxt>
+                    <InputTxt value={buttonTitle} onChange={(e) => HandleButtonTitle(e)}  >{props.children}</InputTxt>
                 </div>
                 <div className="color__picker">
                     <ul>

@@ -34,7 +34,18 @@
 background-color: white;
 }
 
+.txtButton { 
 
+    height: 100%;
+    width: 100%;
+    padding: 2px 4px;
+    border: 1px solid #ffffff !important;
+    background-color: transparent ;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
 
 
 .color__picker {
