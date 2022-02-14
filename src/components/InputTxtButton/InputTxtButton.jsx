@@ -11,18 +11,19 @@ const InputTxtButton = (props) => {
     const Ref = useRef(null)
 
 
-    const HandleColumnTitle = (Columns, Id) => {
+    // const HandleColumnTitle = () => {
 
-        setColumnsTitle(columnsTitle.title = buttonTitle)
+    //     setColumnsTitle(columnsTitle.title = buttonTitle)
 
 
-    }
+    // }
 
 
 
     const HandleButtonTitle = (e) => {
 
         setButtonTitle(e.target.value)
+
         console.log(props.Columns.find(x => x.id === props.id).title)
 
 
@@ -36,9 +37,9 @@ const InputTxtButton = (props) => {
 
                 setTxtButton(false)
 
-                HandleColumnTitle(props.Columns, props.id)
-
-
+                // HandleColumnTitle(props.Columns, props.id)
+                if (props.Columns.find(x => x.id === props.id))
+                    return { ...props.Columns, title: buttonTitle }
             }
 
         }

@@ -48,7 +48,7 @@ const Main = () => {
     return (
         <main>
 
-            <MenuButton src={<Automation />} onClick={() => console.log(Columns)} />
+            {/* <MenuButton src={<Automation />} onClick={() => console.log(Columns)} /> */}
             {Columns.map((e) => { return <Column HandleColumnsDeletion={HandleColumnsDeletion} title={e.title} id={e.id} key={e.id} Columns={Columns} /> })}
 
 
