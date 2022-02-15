@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useEffect, useRef } from "react";
 import "./ColumnItem.styles.css"
 import MenuButton from "../MenuButton/MenuButton";
 import Modal from "../Modal/Modal";
@@ -9,9 +9,44 @@ import { Close, Trash, Options, Plus, Activity, Automation, Filter, Help, Integr
 const ColumnItem = (props) => {
 
 
+    const GetItemInfo = () => {
+
+        props.setInputTitle(props.title)
+        props.setInputContent(props.content)
+        props.setInputId(props.id)
+    }
+
+
+    const RefItem = useRef(null)
+    useEffect(() => {
+
+        function handleClickOutside(event) {
+            if (RefItem.current && !RefItem.current.contains(event.target)) {
+
+                console.log('oi')
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+
+            document.removeEventListener("mousedown", handleClickOutside);
+
+        };
+
+    }, [RefItem])
+
+
+
     return (
         <>
-            <div className="columnItem" onClick={() => { props.setOpenItemModal(true) }}>
+            <div className="columnItem" ref={RefItem}
+                onClick={() => {
+                    //     props.setOpenItemModal(true)
+                    //     GetItemInfo()
+
+                }}
+            >
                 <div className="columnItem__header">
                     <div className="columnItem__section__1">
                         <span>fruta</span>
@@ -19,10 +54,10 @@ const ColumnItem = (props) => {
                     </div>
                     <div className="columnItem__section__2">
                         <h3>
+
                             {props.title}
                         </h3>
                     </div>
-
                 </div>
 
                 <p>
@@ -31,45 +66,7 @@ const ColumnItem = (props) => {
 
             </div>
 
-            <Modal onClick={() => { props.setOpenItemModal(false) }} value={props.openItemModal}>
-                <MenuButton src={<Close />} onClick={() => { props.setOpenItemModal(false) }} />
-                <div className="item__edit_wrapper">
-                    <h3>
-                        Edit Item
-                    </h3>
-                    <div className="item__edit__1">
-                        <span>Titulo</span>
-                        <InputTxt value={props.inputTitle} onChange={props.HandleInputTitle} />
-
-                    </div>
-                    <div className="item__edit__2">
-                        <span>
-                            Conteudo
-                        </span>
-                        <InputTxt value={props.inputContent} onChange={props.HandleInputContent} /></div>
-
-                    <div className="creation__btns">
-                        <button
-                            onClick={() => { props.setOpenItemModal(false) }}
-                        >
-                            Cancelar
-                        </button>
-                        <button onClick={() => {
-
-                            props.HandleItemWraper(props.inputTitle, props.inputContent)
-                            props.setOpenItemModal(false)
-                        }}
-                            className={`save--button ${props.inputTitle ? null : 'save--button--disable'}`} disabled={!props.inputTitle}
-                        >
-                            Salvar
-                        </button>
-
-                    </div>
-
-                </div>
-            </Modal>
         </>
-
     )
 }
 

@@ -14,6 +14,8 @@ const Column = (props) => {
 
     const [inputTitle, setInputTitle] = useState('')
 
+    const [inputId, setInputId] = useState('')
+
     const [inputContent, setInputContent] = useState('')
 
     const [openItemModal, setOpenItemModal] = useState(false)
@@ -51,23 +53,35 @@ const Column = (props) => {
         setItemWraper(newItemWraper)
     }
 
+    const HandleItemAdd = () => {
+
+
+        console.log(itemWraper.find(x => x.id === inputId))
+
+        if (itemWraper.find(x => x.id === inputId)) {
+
+            itemWraper.find(x => x.id === inputId).title = inputTitle
+            itemWraper.find(x => x.id === inputId).Conteudo = inputContent
+
+        } else {
+            HandleItemWraper(inputTitle, inputContent)
+        }
+
+    }
 
 
     return (
         <>
             <div className="column">
-                <ColumnHeader id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
+                <ColumnHeader setInputId={setInputId} id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
                 <div className="column__main">
                     {itemWraper.map((e) => {
                         return <ColumnItem
-                            HandleInputTitle={HandleInputTitle}
-                            inputTitle={inputTitle}
-                            HandleInputContent={HandleInputContent}
-                            inputContent={inputContent}
+                            setInputTitle={setInputTitle}
+                            setInputContent={setInputContent}
                             HandleItemWraperDeletion={HandleItemWraperDeletion}
-                            itemWraper={itemWraper}
+                            setInputId={setInputId}
                             setOpenItemModal={setOpenItemModal}
-                            openItemModal={openItemModal}
                             title={e.title}
                             content={e.Conteudo}
                             id={e.id}
@@ -101,8 +115,9 @@ const Column = (props) => {
                         </button>
                         <button onClick={() => {
 
-                            HandleItemWraper(inputTitle, inputContent)
+                            // HandleItemWraper(inputTitle, inputContent)
                             setOpenItemModal(false)
+                            HandleItemAdd()
                         }}
                             className={`save--button ${inputTitle ? null : 'save--button--disable'}`} disabled={!inputTitle}
                         >
@@ -113,6 +128,7 @@ const Column = (props) => {
 
                 </div>
             </Modal>
+
         </>
     )
 }

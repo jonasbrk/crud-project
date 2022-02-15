@@ -33,6 +33,7 @@ const ColumnHeader = (props) => {
                         props.setOpenItemModal(true)
                         props.setInputTitle('')
                         props.setInputContent('')
+                        props.setInputId('')
                     }
                     } src={<Plus />} />
                 </div>
