@@ -1,5 +1,6 @@
-import react, { useEffect, useRef, useState } from "react";
+import react, { useEffect, useRef, useState, useContext } from "react";
 import { useDrag, useDrop } from 'react-dnd'
+import columnContext from './context'
 import "./ColumnItem.styles.css"
 import MenuButton from "../MenuButton/MenuButton";
 import Modal from "../Modal/Modal";
@@ -9,6 +10,7 @@ import { Edit, Close, Trash, Options, Plus, Activity, Automation, Filter, Help, 
 
 const ColumnItem = (props) => {
 
+    const { move } = useContext(columnContext)
     const ref = useRef()
 
     const [{ isDragging }, dragRef] = useDrag({
@@ -17,7 +19,8 @@ const ColumnItem = (props) => {
         type: 'CARD',
         item: () => ({
             id: props.id,
-            index: props.index
+            index: props.index,
+            listIndex: props.listIndex
         }),
         collect: monitor => ({
 
@@ -31,10 +34,13 @@ const ColumnItem = (props) => {
         accept: 'CARD',
         hover(item, monitor) {
 
+            const draggedListIndex = item.listIndex;
+            const targetListIndex = props.listIndex;
+
             const draggedIndex = item.index
             const targetIndex = props.index
 
-            if (draggedIndex === targetIndex) return
+            if (draggedIndex === targetIndex && draggedListIndex === targetListIndex) return
 
             const targetSize = ref.current.getBoundingClientRect();
             const targetCenter = (targetSize.bottom - targetSize.top) / 2;
@@ -45,7 +51,10 @@ const ColumnItem = (props) => {
             if (draggedIndex < targetIndex && draggedTop < targetCenter) return
             if (draggedIndex > targetIndex && draggedTop > targetCenter) return
 
-            console.log('oi')
+            move(draggedListIndex, targetListIndex, draggedIndex, targetIndex)
+
+            item.index = targetIndex
+            item.listIndex = targetListIndex
         }
     })
 

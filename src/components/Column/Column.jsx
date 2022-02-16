@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 import "./Column.styles.css"
 import { Close, Trash, Options, Plus, Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg'
 
@@ -10,7 +10,7 @@ import InputTxt from "../InputTxt/InputTxt";
 
 const Column = (props) => {
 
-    const [itemWraper, setItemWraper] = useState([])
+    const [itemWraper, setItemWraper] = useState(props.Column.cards)
 
     const [inputTitle, setInputTitle] = useState('')
 
@@ -23,7 +23,7 @@ const Column = (props) => {
 
     const HandleItemWraper = (Title, Content) => {
 
-        const newItemWraper = [...itemWraper,
+        props.Column.cards = [...itemWraper,
 
         {
             id: Math.random(),
@@ -31,44 +31,42 @@ const Column = (props) => {
             Conteudo: Content,
         }];
 
-        setItemWraper(newItemWraper)
+
+
     }
+
+    useEffect(() => {
+        setItemWraper(props.Column.cards)
+        console.log(props.Column.cards)
+
+    }, [props.Column.cards])
 
     const HandleInputTitle = (e) => {
 
         setInputTitle(e.target.value)
-
     }
 
     const HandleInputContent = (e) => {
 
         setInputContent(e.target.value)
-
     }
 
     const HandleItemWraperDeletion = (itemWraperID) => {
 
         const newItemWraper = itemWraper.filter((item) => item.id !== itemWraperID)
-
         setItemWraper(newItemWraper)
     }
 
     const HandleItemAdd = () => {
 
-
-        console.log(itemWraper.find(x => x.id === inputId))
-
         if (itemWraper.find(x => x.id === inputId)) {
-
             itemWraper.find(x => x.id === inputId).title = inputTitle
             itemWraper.find(x => x.id === inputId).Conteudo = inputContent
-
         } else {
             HandleItemWraper(inputTitle, inputContent)
         }
 
     }
-
 
     return (
         <>
@@ -84,9 +82,11 @@ const Column = (props) => {
                             setOpenItemModal={setOpenItemModal}
                             title={e.title}
                             content={e.Conteudo}
+                            card={e.cards}
                             id={e.id}
                             key={e.id}
                             index={index}
+                            listIndex={props.index}
                         />
                     })}
                 </div>
