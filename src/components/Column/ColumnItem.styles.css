@@ -8,10 +8,28 @@
     border-radius: 4px;
     box-sizing: border-box;
     background-color: white;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
     margin-bottom: 12px;
+    cursor: grab;
     
 
+}
+
+
+.columnItem--dragging {
+
+    border: 2px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    padding: 10px 10px 10px 6px;
+    background-color: transparent;
+    box-shadow: none;
+    cursor: grabbing;
+    transition: none;
+}
+
+.columnItem--dragging div , .columnItem--dragging p {
+
+    opacity: 0;
 }
 
 .columnItem:hover {
@@ -49,4 +67,11 @@
     align-content: flex-end;
     height: 17px;
     font-size: 14px;
+}
+
+.columnItem__buttons__wrapper {
+
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
 }

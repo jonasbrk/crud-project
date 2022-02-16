@@ -1,4 +1,6 @@
 import react from "react";
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from "react-dnd-html5-backend";
 import './Home.styles.css';
 import MenuButton from "../../components/MenuButton/MenuButton";
 import InputTxt from "../../components/InputTxt/InputTxt";
@@ -10,7 +12,7 @@ import { Activity, Automation, Filter, Help, Integrate, Notification, People, Se
 const Home = () => {
 
     return (
-        <>
+        <DndProvider backend={HTML5Backend}>
             <header className="divider--bottom">
                 <div className="header__1 divider--bottom">
                     <div className="header__wrapper">
@@ -58,7 +60,7 @@ const Home = () => {
             </header>
             <Main />
 
-        </>
+        </DndProvider>
     )
 }
 

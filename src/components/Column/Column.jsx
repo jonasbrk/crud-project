@@ -75,7 +75,7 @@ const Column = (props) => {
             <div className="column">
                 <ColumnHeader setInputId={setInputId} id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
                 <div className="column__main">
-                    {itemWraper.map((e) => {
+                    {itemWraper.map((e, index) => {
                         return <ColumnItem
                             setInputTitle={setInputTitle}
                             setInputContent={setInputContent}
@@ -86,6 +86,7 @@ const Column = (props) => {
                             content={e.Conteudo}
                             id={e.id}
                             key={e.id}
+                            index={index}
                         />
                     })}
                 </div>
