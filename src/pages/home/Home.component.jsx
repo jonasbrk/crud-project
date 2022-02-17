@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from "react-dnd-html5-backend";
 import './Home.styles.css';
@@ -10,6 +10,17 @@ import { Activity, Automation, Filter, Help, Integrate, Notification, People, Se
 
 
 const Home = () => {
+
+
+    const [searchInput, setSearchInput] = useState('')
+
+
+    const handleSearchImput = (i) => {
+
+        const inputValue = i.target.value
+        setSearchInput(inputValue)
+        console.log(searchInput)
+    }
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -42,7 +53,7 @@ const Home = () => {
                     </div>
                     <div className="header__wrapper ">
                         <div className="header__wrapper ">
-                            <InputTxt type="Search" placeholder="Procurar cards" />
+                            <InputTxt onChange={(i) => { handleSearchImput(i) }} type="Search" placeholder="Procurar cards" />
                             <MenuButton src={<Filter />} />
                         </div>
                         <div className="header__wrapper divider--left">
@@ -58,7 +69,7 @@ const Home = () => {
                     </div>
                 </div>
             </header>
-            <Main />
+            <Main searchInput={searchInput} />
 
         </DndProvider>
     )

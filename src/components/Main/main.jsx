@@ -10,7 +10,7 @@ import columnContext from '../Column/context'
 import { produce, setAutoFreeze } from 'immer'
 
 
-const Main = () => {
+const Main = (props) => {
 
     setAutoFreeze(false)
 
@@ -50,23 +50,20 @@ const Main = () => {
     }
 
 
+
+
     function move(fromList, toList, from, to) {
 
         console.log(fromList, from, to)
 
-        const newColumn = produce(Columns, (draft) => {
+        setColumns(produce(Columns, (draft) => {
 
             const dragged = draft[fromList].cards[from];
 
             draft[fromList].cards.splice(from, 1);
             draft[toList].cards.splice(to, 0, dragged);
 
-
-        })
-
-        setColumns(newColumn)
-
-        console.log(Columns[0].cards)
+        }))
     }
 
 
@@ -84,7 +81,9 @@ const Main = () => {
                         key={e.id}
                         Column={e}
                         Columns={Columns}
-                        index={index} />
+                        index={index}
+                        searchInput={props.searchInput}
+                    />
                 })}
 
 

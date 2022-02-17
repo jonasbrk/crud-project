@@ -35,11 +35,7 @@ const Column = (props) => {
 
     }
 
-    useEffect(() => {
-        setItemWraper(props.Column.cards)
-        console.log(props.Column.cards)
 
-    }, [props.Column.cards])
 
     const HandleInputTitle = (e) => {
 
@@ -53,8 +49,11 @@ const Column = (props) => {
 
     const HandleItemWraperDeletion = (itemWraperID) => {
 
-        const newItemWraper = itemWraper.filter((item) => item.id !== itemWraperID)
-        setItemWraper(newItemWraper)
+        const newItemWraper = props.Column.cards.filter((item) => item.id !== itemWraperID)
+
+
+        props.Column.cards = newItemWraper
+        setItemWraper(props.Column.cards)
     }
 
     const HandleItemAdd = () => {
@@ -67,6 +66,29 @@ const Column = (props) => {
         }
 
     }
+
+    useEffect(() => {
+        setItemWraper(props.Column.cards)
+        console.log(props.Column.cards, 'oi')
+
+    }, [props.Column.cards])
+
+
+    useEffect(() => {
+
+        const HandleSearch = () => {
+
+            const cardFilter = props.Column.cards.filter((allCards) => allCards.title.toLocaleLowerCase().includes(props.searchInput) || allCards.Conteudo.toLocaleLowerCase().includes(props.searchInput))
+
+            if (props.searchInput) setItemWraper(cardFilter)
+            if (!props.searchInput) setItemWraper(props.Column.cards)
+
+        }
+        HandleSearch()
+
+    }, [props.searchInput])
+
+
 
     return (
         <>
