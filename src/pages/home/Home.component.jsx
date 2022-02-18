@@ -1,11 +1,11 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from "react-dnd-html5-backend";
 import './Home.styles.css';
 import MenuButton from "../../components/MenuButton/MenuButton";
 import InputTxt from "../../components/InputTxt/InputTxt";
 import Main from "../../components/Main/main";
-import { Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg/'
+import { Loading, Close, Search, Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg/'
 
 
 
@@ -13,14 +13,41 @@ const Home = () => {
 
 
     const [searchInput, setSearchInput] = useState('')
+    const [searchIcon, setSearchIcon] = useState(<Search />)
+    const [searchClick, setSearchClick] = useState('')
 
 
     const handleSearchImput = (i) => {
 
         const inputValue = i.target.value
         setSearchInput(inputValue)
-        console.log(searchInput)
+        setSearchClick(inputValue)
     }
+
+    const handleInputButton = () => {
+
+        if (searchInput) {
+
+            setSearchClick('')
+            setSearchInput('')
+        }
+    }
+
+    useEffect(() => {
+
+        if (searchInput) {
+
+            setSearchIcon(<Loading />)
+
+            const delayDebounceFn = setTimeout(() => setSearchIcon(<Close />), 1000)
+
+            return () => clearTimeout(delayDebounceFn)
+
+        }
+        if (!searchInput) {
+            setSearchIcon(<Search />)
+        }
+    }, [searchInput])
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -53,7 +80,7 @@ const Home = () => {
                     </div>
                     <div className="header__wrapper ">
                         <div className="header__wrapper ">
-                            <InputTxt onChange={(i) => { handleSearchImput(i) }} type="Search" placeholder="Procurar cards" />
+                            <InputTxt value={searchClick} onClick={() => handleInputButton()} src={searchIcon} onChange={(i) => { handleSearchImput(i) }} type="Search" placeholder="Procurar cards" />
                             <MenuButton src={<Filter />} />
                         </div>
                         <div className="header__wrapper divider--left">

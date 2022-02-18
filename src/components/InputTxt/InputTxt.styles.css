@@ -9,6 +9,7 @@
     border-radius: 4px;
     outline: none;
     transition: all 0.3s ease;
+    resize: none;
 
 }
 .inputTxt::placeholder, .inputType--Search::placeholder {
@@ -23,6 +24,12 @@
     cursor: text;
     caret-color: #0b66ff;
 }
+
+.inputTxt  .inputSeach__wrapper textarea {
+
+    resize: none;
+}
+
 
 
 .inputSeach__wrapper {

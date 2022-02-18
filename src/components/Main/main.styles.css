@@ -1,10 +1,11 @@
 main{
 
-    height: 100vh;
+    height: calc(100vh - 97px);
     display: flex;
     padding: 0 24px;
     background-color: #fafafa;
     gap: 8px;
+    overflow-x: auto;
 }
 
 
@@ -17,6 +18,11 @@ main{
     align-items: center;
     justify-content: center;
 
+}
+
+.newColumn{
+
+    min-width: fit-content;
 }
 
 .creation__input {

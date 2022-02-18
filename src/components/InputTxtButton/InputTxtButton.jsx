@@ -6,6 +6,7 @@ const InputTxtButton = (props) => {
 
     const [txtButton, setTxtButton] = useState(false)
     const [buttonTitle, setButtonTitle] = useState(props.title)
+    const [buttonPlaceHoldder, setButtonPlaceHoldder] = useState('Inserir titulo')
 
     const Ref = useRef(null)
 
@@ -22,10 +23,14 @@ const InputTxtButton = (props) => {
     const HandleButtonTitle = (e) => {
 
         setButtonTitle(e.target.value)
-
-
-
     }
+
+    useEffect(() => {
+
+        if (buttonTitle) setButtonPlaceHoldder(buttonTitle)
+        if (!buttonTitle) setButtonPlaceHoldder('Inserir titulo')
+
+    }, [buttonTitle])
 
 
     useEffect(() => {
@@ -49,11 +54,11 @@ const InputTxtButton = (props) => {
     return (
         <>
             <button className="txtButton" onClick={() => setTxtButton(true)}>
-                {buttonTitle}
+                {buttonPlaceHoldder}
             </button>
             <div ref={Ref} className={`txtButton__wrapper ${txtButton && ('txtButton__wrapper--open')}`}>
                 <div className={`txtButton__Input ${props.buttonColor}`}>
-                    <InputTxt value={buttonTitle} onChange={(e) => HandleButtonTitle(e)}  >{props.children}</InputTxt>
+                    <InputTxt placeholder='inserir titulo' value={buttonTitle} onChange={(e) => HandleButtonTitle(e)}  >{props.children}</InputTxt>
                 </div>
                 <div className="color__picker">
                     <ul>

@@ -71,8 +71,8 @@ const ColumnItem = (props) => {
         <>
             <div className={`columnItem ${isDragging ? 'columnItem--dragging' : ""}`} ref={ref}>
                 <div className="columnItem__header">
-                    <div className="columnItem__section__1">
-                        <span>fruta</span>
+                    <div className="divider--bottom columnItem__section__1">
+                        <div></div>
                         <div className="columnItem__buttons__wrapper">
                             <MenuButton onClick={() => {
                                 props.setOpenItemModal(true)
@@ -83,7 +83,6 @@ const ColumnItem = (props) => {
                     </div>
                     <div className="columnItem__section__2">
                         <h3>
-
                             {props.title}
                         </h3>
                     </div>

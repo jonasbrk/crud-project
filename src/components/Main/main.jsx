@@ -28,6 +28,7 @@ const Main = (props) => {
         {
             id: Math.random(),
             title: input,
+            color: 'background--1',
             cards: [],
         }];
         setColumns(newColumn)
@@ -77,6 +78,7 @@ const Main = (props) => {
                         HandleColumnsDeletion={HandleColumnsDeletion}
                         card={e.cards}
                         title={e.title}
+                        color={e.color}
                         id={e.id}
                         key={e.id}
                         Column={e}
@@ -86,13 +88,13 @@ const Main = (props) => {
                     />
                 })}
 
+                <div className="column">
+                    <MenuButton onClick={() => {
+                        setOpenModal(true)
+                        setInputData('')
+                    }} src={<Plus />}><span className="newColumn">Nova fase</span></MenuButton>
+                </div>
 
-                <MenuButton onClick={() => {
-                    setOpenModal(true)
-                    setInputData('')
-                }} src={<Plus />}>Nova fase</MenuButton>
-
-                <MenuButton onClick={() => { console.log(Columns) }} src={<Automation />} />
                 <Modal onClick={() => { setOpenModal(false) }} value={openModal}>
                     <MenuButton src={<Close />} onClick={() => { setOpenModal(false) }} />
                     <div className="creation__column">

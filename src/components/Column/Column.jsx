@@ -7,10 +7,13 @@ import ColumnItem from "./ColumnItem";
 import MenuButton from "../MenuButton/MenuButton";
 import Modal from "../Modal/Modal";
 import InputTxt from "../InputTxt/InputTxt";
+import InputTxtArea from "../InputTxt/InputTxtArea";
 
 const Column = (props) => {
 
     const [itemWraper, setItemWraper] = useState(props.Column.cards)
+
+    const [itemLength, setItemLength] = useState('')
 
     const [inputTitle, setInputTitle] = useState('')
 
@@ -32,7 +35,7 @@ const Column = (props) => {
         }];
 
 
-
+        setItemLength(props.Column.cards.length)
     }
 
 
@@ -76,16 +79,21 @@ const Column = (props) => {
 
     useEffect(() => {
 
-        const HandleSearch = () => {
+        const HandleSearch = setTimeout(() => {
+
 
             const cardFilter = props.Column.cards.filter((allCards) => allCards.title.toLocaleLowerCase().includes(props.searchInput) || allCards.Conteudo.toLocaleLowerCase().includes(props.searchInput))
 
+
             if (props.searchInput) setItemWraper(cardFilter)
-            if (!props.searchInput) setItemWraper(props.Column.cards)
 
-        }
-        HandleSearch()
 
+
+        }, 1000)
+
+        if (!props.searchInput) setItemWraper(props.Column.cards)
+
+        return () => clearTimeout(HandleSearch)
     }, [props.searchInput])
 
 
@@ -93,7 +101,7 @@ const Column = (props) => {
     return (
         <>
             <div className="column">
-                <ColumnHeader setInputId={setInputId} id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
+                <ColumnHeader Column={props.Column} color={props.color} setInputId={setInputId} itemLength={itemLength} id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
                 <div className="column__main">
                     {itemWraper.map((e, index) => {
                         return <ColumnItem
@@ -111,6 +119,7 @@ const Column = (props) => {
                             listIndex={props.index}
                         />
                     })}
+
                 </div>
             </div>
             <Modal onClick={() => { setOpenItemModal(false) }} value={openItemModal}>
@@ -128,7 +137,7 @@ const Column = (props) => {
                         <span>
                             Conteudo
                         </span>
-                        <InputTxt value={inputContent} onChange={HandleInputContent} /></div>
+                        <InputTxtArea value={inputContent} onChange={HandleInputContent} type='Area' /></div>
 
                     <div className="creation__btns">
                         <button
