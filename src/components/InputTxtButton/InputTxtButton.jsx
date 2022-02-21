@@ -62,7 +62,7 @@ const InputTxtButton = (props) => {
                 </div>
                 <div className="color__picker">
                     <ul>
-                        <label onClick={() => props.setButtonColor('background--1')} className="background--1"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.setButtonColor('background--1')} className="background--1"><input type="radio" checked name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
                         <label onClick={() => props.setButtonColor('background--2')} className="background--2"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
                         <label onClick={() => props.setButtonColor('background--3')} className="background--3"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
                         <label onClick={() => props.setButtonColor('background--4')} className="background--4"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
