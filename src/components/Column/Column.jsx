@@ -35,9 +35,10 @@ const Column = (props) => {
         }];
 
 
-        setItemLength(props.Column.cards.length)
+
     }
 
+    useEffect(() => { setItemLength(props.Column.cards.length) }, [itemWraper])
 
 
     const HandleInputTitle = (e) => {
