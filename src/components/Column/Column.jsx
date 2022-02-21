@@ -39,7 +39,6 @@ const Column = (props) => {
 
     useEffect(() => { setItemLength(props.column.cards.length) }, [itemWraper])
 
-
     const handleInputTitle = (e) => {
 
         setInputTitle(e.target.value)
