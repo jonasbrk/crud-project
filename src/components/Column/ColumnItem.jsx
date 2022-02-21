@@ -3,10 +3,7 @@ import { useDrag, useDrop } from 'react-dnd'
 import columnContext from './context'
 import "./ColumnItem.styles.css"
 import MenuButton from "../MenuButton/MenuButton";
-import Modal from "../Modal/Modal";
-import InputTxt from "../InputTxt/InputTxt";
-
-import { Edit, Close, Trash, Options, Plus, Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg'
+import { Edit, Trash } from '../../assets/svg'
 
 const ColumnItem = (props) => {
 
@@ -59,12 +56,12 @@ const ColumnItem = (props) => {
     })
 
 
-    const GetItemInfo = () => {
+    // const getItemInfo = () => {
 
-        props.setInputTitle(props.title)
-        props.setInputContent(props.content)
-        props.setInputId(props.id)
-    }
+    //     props.setInputTitle(props.title)
+    //     props.setInputContent(props.content)
+    //     props.setInputId(props.id)
+    // }
 
     dragRef(dropRef(ref));
     return (
@@ -76,9 +73,10 @@ const ColumnItem = (props) => {
                         <div className="columnItem__buttons__wrapper">
                             <MenuButton onClick={() => {
                                 props.setOpenItemModal(true)
-                                GetItemInfo()
+                                // getItemInfo()
+                                props.handleInput(props.title, props.content, props.id)
                             }} src={<Edit />} />
-                            <MenuButton onClick={() => props.HandleItemWraperDeletion(props.id)} src={<Trash />} />
+                            <MenuButton onClick={() => props.handleItemWraperDeletion(props.id)} src={<Trash />} />
                         </div>
                     </div>
                     <div className="columnItem__section__2">

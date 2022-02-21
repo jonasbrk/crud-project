@@ -1,6 +1,6 @@
-import react, { useEffect, useRef, useState } from "react";
+import react, { useState } from "react";
 import "./Column.styles.css"
-import { Trash, Options, Plus, Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg'
+import { Trash, Plus } from '../../assets/svg'
 import InputTxtButton from "../InputTxtButton/InputTxtButton";
 import MenuButton from "../MenuButton/MenuButton";
 
@@ -9,11 +9,17 @@ const ColumnHeader = (props) => {
     const [buttonColor, setButtonColor] = useState('background--1')
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        props.Column.color = buttonColor
+    //     props.column.color = buttonColor
 
-    }, [buttonColor])
+    // }, [buttonColor])
+
+
+    const handleButtonColor = (color) => {
+        setButtonColor(color)
+        props.column.color = buttonColor
+    }
 
 
 
@@ -21,23 +27,28 @@ const ColumnHeader = (props) => {
 
         <div className={`column__header column--${buttonColor}`}>
             <div className={`column__title ${buttonColor}`}>
-                <InputTxtButton id={props.id} title={props.title} Columns={props.Columns} buttonColor={buttonColor} setButtonColor={setButtonColor} id={props.id} />
+                <InputTxtButton
+                    id={props.id}
+                    title={props.title}
+                    columns={props.columns}
+                    buttonColor={buttonColor}
+                    // setButtonColor={setButtonColor}
+                    handleButtonColor={handleButtonColor}
+                />
                 {props.itemLength ? <span>{`(${props.itemLength})`}</span> : ''}
             </div>
             <div className="column__header__btn">
                 <div className="column__btns_1 divider--rigth">
-                    <MenuButton src={<Settings />} />
-                    <MenuButton onClick={() => {
-                        props.HandleColumnsDeletion(props.id)
-
-                    }} src={<Trash />} />
+                    {/* <MenuButton src={<Settings />} /> */}
+                    <MenuButton onClick={() => { props.handleColumnsDeletion(props.id) }} src={<Trash />} />
                 </div>
                 <div className="column__btns_2">
                     <MenuButton onClick={() => {
                         props.setOpenItemModal(true)
-                        props.setInputTitle('')
-                        props.setInputContent('')
-                        props.setInputId('')
+                        // props.setInputTitle('')
+                        // props.setInputContent('')
+                        // props.setInputId('')
+                        props.handleInput('', '', '')
                     }
                     } src={<Plus />} />
                 </div>

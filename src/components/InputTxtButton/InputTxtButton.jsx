@@ -10,25 +10,25 @@ const InputTxtButton = (props) => {
 
     const Ref = useRef(null)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const setTitle = () => {
-            props.Columns.find(x => x.id === props.id).title = buttonTitle
-        }
+    //     props.columns.find(x => x.id === props.id).title = buttonTitle
 
-        setTitle()
-    }, [buttonTitle])
+    // }, [buttonTitle])
 
 
-    const HandleButtonTitle = (e) => {
+    const handleButtonTitle = (e) => {
 
         setButtonTitle(e.target.value)
     }
 
     useEffect(() => {
 
-        if (buttonTitle) setButtonPlaceHoldder(buttonTitle)
-        if (!buttonTitle) setButtonPlaceHoldder('Inserir titulo')
+        // if (buttonTitle) setButtonPlaceHoldder(buttonTitle)
+        // if (!buttonTitle) setButtonPlaceHoldder('Inserir titulo')
+        buttonTitle ? setButtonPlaceHoldder(buttonTitle) : setButtonPlaceHoldder('Inserir titulo')
+
+        props.columns.find(x => x.id === props.id).title = buttonTitle
 
     }, [buttonTitle])
 
@@ -43,10 +43,10 @@ const InputTxtButton = (props) => {
         }
 
         document.addEventListener("mousedown", handleClickOutside);
+
         return () => {
 
             document.removeEventListener("mousedown", handleClickOutside);
-
         };
 
     }, [Ref])
@@ -58,22 +58,22 @@ const InputTxtButton = (props) => {
             </button>
             <div ref={Ref} className={`txtButton__wrapper ${txtButton && ('txtButton__wrapper--open')}`}>
                 <div className={`txtButton__Input ${props.buttonColor}`}>
-                    <InputTxt placeholder='inserir titulo' value={buttonTitle} onChange={(e) => HandleButtonTitle(e)}  >{props.children}</InputTxt>
+                    <InputTxt placeholder='Inserir titulo' value={buttonTitle} onChange={(e) => handleButtonTitle(e)}  >{props.children}</InputTxt>
                 </div>
                 <div className="color__picker">
                     <ul>
-                        <label onClick={() => props.setButtonColor('background--1')} className="background--1"><input type="radio" checked name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--2')} className="background--2"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--3')} className="background--3"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--4')} className="background--4"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--5')} className="background--5"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--6')} className="background--6"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--7')} className="background--7"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--8')} className="background--8"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--9')} className="background--9"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--10')} className="background--10"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--11')} className="background--11"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
-                        <label onClick={() => props.setButtonColor('background--12')} className="background--12"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--1')} className="background--1"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--2')} className="background--2"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--3')} className="background--3"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--4')} className="background--4"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--5')} className="background--5"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--6')} className="background--6"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--7')} className="background--7"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--8')} className="background--8"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--9')} className="background--9"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--10')} className="background--10"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--11')} className="background--11"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
+                        <label onClick={() => props.handleButtonColor('background--12')} className="background--12"><input type="radio" name={`color__picker${props.id}`} /><span className="checkmark"></span> </label>
                     </ul>
                 </div>
 

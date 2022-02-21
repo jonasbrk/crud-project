@@ -1,11 +1,10 @@
 import react, { useEffect, useState } from "react";
 import "./main.styles.css"
-import { Close, Plus, Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg'
+import { Close, Plus } from '../../assets/svg'
 import MenuButton from "../MenuButton/MenuButton";
 import Column from "../Column/Column";
 import Modal from "../Modal/Modal";
 import InputTxt from "../InputTxt/InputTxt";
-
 import columnContext from '../Column/context'
 import { produce, setAutoFreeze } from 'immer'
 
@@ -16,14 +15,14 @@ const Main = (props) => {
 
     const [openModal, setOpenModal] = useState(false)
 
-    const [Columns, setColumns] = useState([]);
+    const [columns, setColumns] = useState([]);
 
     const [InputData, setInputData] = useState('')
 
 
-    const HandleColumns = (input) => {
+    const handleColumns = (input) => {
 
-        const newColumn = [...Columns,
+        const newColumn = [...columns,
 
         {
             id: Math.random(),
@@ -35,9 +34,9 @@ const Main = (props) => {
 
     }
 
-    const HandleColumnsDeletion = (ColumnId) => {
+    const handleColumnsDeletion = (columnId) => {
 
-        const newColumn = Columns.filter((Column) => Column.id !== ColumnId)
+        const newColumn = columns.filter((column) => column.id !== columnId)
 
         setColumns(newColumn)
     }
@@ -57,7 +56,7 @@ const Main = (props) => {
 
         console.log(fromList, from, to)
 
-        setColumns(produce(Columns, (draft) => {
+        setColumns(produce(columns, (draft) => {
 
             const dragged = draft[fromList].cards[from];
 
@@ -70,19 +69,19 @@ const Main = (props) => {
 
 
     return (
-        <columnContext.Provider value={{ Columns, move }}>
+        <columnContext.Provider value={{ columns, move }}>
             <main>
-                {Columns.map((e, index) => {
+                {columns.map((e, index) => {
                     return <Column
                         setColumns={setColumns}
-                        HandleColumnsDeletion={HandleColumnsDeletion}
+                        handleColumnsDeletion={handleColumnsDeletion}
                         card={e.cards}
                         title={e.title}
                         color={e.color}
                         id={e.id}
                         key={e.id}
-                        Column={e}
-                        Columns={Columns}
+                        column={e}
+                        columns={columns}
                         index={index}
                         searchInput={props.searchInput}
                     />
@@ -108,7 +107,7 @@ const Main = (props) => {
                                 Cancelar
                             </button>
                             <button onClick={() => {
-                                HandleColumns(InputData)
+                                handleColumns(InputData)
                                 setOpenModal(false)
                             }} className={`save--button ${InputData ? null : 'save--button--disable'}`} disabled={!InputData}>
                                 Salvar

@@ -1,6 +1,6 @@
 import react, { useEffect, useState } from "react";
 import "./Column.styles.css"
-import { Close, Trash, Options, Plus, Activity, Automation, Filter, Help, Integrate, Notification, People, Settings, Share, Tools } from '../../assets/svg'
+import { Close } from '../../assets/svg'
 
 import ColumnHeader from "./ColumnHeader";
 import ColumnItem from "./ColumnItem";
@@ -11,90 +11,91 @@ import InputTxtArea from "../InputTxt/InputTxtArea";
 
 const Column = (props) => {
 
-    const [itemWraper, setItemWraper] = useState(props.Column.cards)
-
-    const [itemLength, setItemLength] = useState('')
-
-    const [inputTitle, setInputTitle] = useState('')
+    const [itemWraper, setItemWraper] = useState(props.column.cards)
 
     const [inputId, setInputId] = useState('')
 
+    const [inputTitle, setInputTitle] = useState('')
+
     const [inputContent, setInputContent] = useState('')
+
+    const [itemLength, setItemLength] = useState('')
 
     const [openItemModal, setOpenItemModal] = useState(false)
 
 
-    const HandleItemWraper = (Title, Content) => {
+    const handleItemWraper = (Title, Content) => {
 
-        props.Column.cards = [...itemWraper,
+        props.column.cards = [...itemWraper,
 
         {
             id: Math.random(),
             title: Title,
-            Conteudo: Content,
+            content: Content,
         }];
 
-
-
+        setItemWraper(props.column.cards)
     }
 
-    useEffect(() => { setItemLength(props.Column.cards.length) }, [itemWraper])
+    useEffect(() => { setItemLength(props.column.cards.length) }, [itemWraper])
 
 
-    const HandleInputTitle = (e) => {
+    const handleInputTitle = (e) => {
 
         setInputTitle(e.target.value)
     }
 
-    const HandleInputContent = (e) => {
+    const handleInputContent = (e) => {
 
         setInputContent(e.target.value)
     }
 
-    const HandleItemWraperDeletion = (itemWraperID) => {
+    const handleItemWraperDeletion = (itemWraperID) => {
 
-        const newItemWraper = props.Column.cards.filter((item) => item.id !== itemWraperID)
+        const newItemWraper = props.column.cards.filter((item) => item.id !== itemWraperID)
 
-
-        props.Column.cards = newItemWraper
-        setItemWraper(props.Column.cards)
+        props.column.cards = newItemWraper
+        setItemWraper(props.column.cards)
     }
 
-    const HandleItemAdd = () => {
+    const handleItemAdd = () => {
 
         if (itemWraper.find(x => x.id === inputId)) {
             itemWraper.find(x => x.id === inputId).title = inputTitle
-            itemWraper.find(x => x.id === inputId).Conteudo = inputContent
+            itemWraper.find(x => x.id === inputId).content = inputContent
         } else {
-            HandleItemWraper(inputTitle, inputContent)
+            handleItemWraper(inputTitle, inputContent)
         }
 
     }
 
+    // useEffect(() => {
+    //     setItemWraper(props.column.cards)
+
+    // }, [props.column.cards])
+
+    const handleInput = (title, content, id) => {
+
+        setInputTitle(title)
+        setInputContent(content)
+        setInputId(id)
+
+    }
+
+
     useEffect(() => {
-        setItemWraper(props.Column.cards)
-        console.log(props.Column.cards, 'oi')
 
-    }, [props.Column.cards])
+        const handleSearch = setTimeout(() => {
 
-
-    useEffect(() => {
-
-        const HandleSearch = setTimeout(() => {
-
-
-            const cardFilter = props.Column.cards.filter((allCards) => allCards.title.toLocaleLowerCase().includes(props.searchInput) || allCards.Conteudo.toLocaleLowerCase().includes(props.searchInput))
-
+            const cardFilter = props.column.cards.filter((allCards) => allCards.title.toLocaleLowerCase().includes(props.searchInput) || allCards.content.toLocaleLowerCase().includes(props.searchInput))
 
             if (props.searchInput) setItemWraper(cardFilter)
 
-
-
         }, 1000)
 
-        if (!props.searchInput) setItemWraper(props.Column.cards)
+        if (!props.searchInput) setItemWraper(props.column.cards)
 
-        return () => clearTimeout(HandleSearch)
+        return () => clearTimeout(handleSearch)
     }, [props.searchInput])
 
 
@@ -102,18 +103,20 @@ const Column = (props) => {
     return (
         <>
             <div className="column">
-                <ColumnHeader Column={props.Column} color={props.color} setInputId={setInputId} itemLength={itemLength} id={props.id} title={props.title} Columns={props.Columns} setOpenItemModal={setOpenItemModal} HandleColumnsDeletion={props.HandleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
+                <MenuButton onClick={() => { console.log(props.column) }} />
+                <ColumnHeader handleInput={handleInput} column={props.column} color={props.color} setInputId={setInputId} itemLength={itemLength} id={props.id} title={props.title} columns={props.columns} setOpenItemModal={setOpenItemModal} handleColumnsDeletion={props.handleColumnsDeletion} setInputContent={setInputContent} setInputTitle={setInputTitle} />
                 <div className="column__main">
                     {itemWraper.map((e, index) => {
                         return <ColumnItem
-                            setInputTitle={setInputTitle}
-                            setInputContent={setInputContent}
-                            HandleItemWraperDeletion={HandleItemWraperDeletion}
-                            setInputId={setInputId}
+                            // setInputTitle={setInputTitle}
+                            // setInputContent={setInputContent}
+                            handleItemWraperDeletion={handleItemWraperDeletion}
+                            // setInputId={setInputId}
+                            handleInput={handleInput}
                             setOpenItemModal={setOpenItemModal}
                             title={e.title}
-                            content={e.Conteudo}
-                            card={e.cards}
+                            content={e.content}
+                            // card={e.cards}
                             id={e.id}
                             key={e.id}
                             index={index}
@@ -131,14 +134,14 @@ const Column = (props) => {
                     </h3>
                     <div className="item__edit__1">
                         <span>Titulo</span>
-                        <InputTxt value={inputTitle} onChange={HandleInputTitle} />
+                        <InputTxt value={inputTitle} onChange={handleInputTitle} />
 
                     </div>
                     <div className="item__edit__2">
                         <span>
                             Conteudo
                         </span>
-                        <InputTxtArea value={inputContent} onChange={HandleInputContent} type='Area' /></div>
+                        <InputTxtArea value={inputContent} onChange={handleInputContent} type='Area' /></div>
 
                     <div className="creation__btns">
                         <button
@@ -147,10 +150,8 @@ const Column = (props) => {
                             Cancelar
                         </button>
                         <button onClick={() => {
-
-                            // HandleItemWraper(inputTitle, inputContent)
                             setOpenItemModal(false)
-                            HandleItemAdd()
+                            handleItemAdd()
                         }}
                             className={`save--button ${inputTitle ? null : 'save--button--disable'}`} disabled={!inputTitle}
                         >
