@@ -1,6 +1,4 @@
-<h1 style="text-align: center;"> Tesla clone </h1>
-
-<p style="text-align: center;">Recration of official tesla website </p>
+<h1 style="text-align: center;"> Crud Project </h1>
 
 <p style="text-align: center;">
     <a href="#about">About</a> ∙
