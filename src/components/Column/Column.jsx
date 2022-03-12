@@ -68,10 +68,10 @@ const Column = (props) => {
 
     }
 
-    // useEffect(() => {
-    //     setItemWraper(props.column.cards)
+    useEffect(() => {
+        setItemWraper(props.column.cards)
 
-    // }, [props.column.cards])
+    }, [props.column.cards])
 
     const handleInput = (title, content, id) => {
 

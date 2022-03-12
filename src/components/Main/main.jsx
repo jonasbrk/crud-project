@@ -50,7 +50,7 @@ const Main = (props) => {
     }
 
 
-
+useEffect(()=>{console.log(columns)},[columns])
 
     function move(fromList, toList, from, to) {
 
@@ -64,6 +64,8 @@ const Main = (props) => {
             draft[toList].cards.splice(to, 0, dragged);
 
         }))
+
+        
     }
 
 
